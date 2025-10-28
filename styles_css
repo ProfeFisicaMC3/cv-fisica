@@ -1,0 +1,703 @@
+:root {
+    --primary: #1a237e;
+    --secondary: #0091ea;
+    --accent: #00e676;
+    --light: #e8eaf6;
+    --dark: #0d47a1;
+    --gray: #546e7a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    line-height: 1.6;
+    padding: 20px 0;
+}
+
+/* Botones de acción */
+.action-buttons {
+    max-width: 1100px;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 0 20px;
+}
+
+.btn-action {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-print {
+    background: white;
+    color: #667eea;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-print:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-logout {
+    background: #e74c3c;
+    color: white;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.btn-logout:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 3rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.physics-elements {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0.15;
+}
+
+.atom {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+}
+
+.nucleus {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: white;
+    border-radius: 50%;
+    top: 48px;
+    left: 48px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.8);
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(255,255,255,0.8); }
+    50% { box-shadow: 0 0 40px rgba(255,255,255,1); }
+}
+
+.orbit {
+    position: absolute;
+    border: 2px solid rgba(255,255,255,0.6);
+    border-radius: 50%;
+}
+
+.orbit-1 {
+    width: 80px;
+    height: 80px;
+    top: 20px;
+    left: 20px;
+    animation: rotate 8s linear infinite;
+}
+
+.orbit-2 {
+    width: 100px;
+    height: 100px;
+    top: 10px;
+    left: 10px;
+    animation: rotate 10s linear infinite reverse;
+}
+
+.orbit-3 {
+    width: 120px;
+    height: 120px;
+    top: 0;
+    left: 0;
+    animation: rotate 12s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.electron {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
+
+.orbit-1 .electron {
+    top: -6px;
+    left: 34px;
+}
+
+.orbit-2 .electron {
+    top: -6px;
+    left: 44px;
+}
+
+.orbit-3 .electron {
+    top: -6px;
+    left: 54px;
+}
+
+.atom:nth-child(1) {
+    top: 5%;
+    left: 5%;
+}
+
+.atom:nth-child(2) {
+    top: 50%;
+    right: 8%;
+}
+
+.atom:nth-child(3) {
+    bottom: 8%;
+    left: 35%;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2.5rem;
+    padding: 2.5rem;
+}
+
+.left-column, .right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.section {
+    margin-bottom: 1rem;
+}
+
+h2 {
+    color: var(--primary);
+    border-bottom: 3px solid var(--secondary);
+    padding-bottom: 0.7rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+h2 i {
+    color: var(--secondary);
+}
+
+h3 {
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+}
+
+.date {
+    color: var(--gray);
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 1.8rem;
+}
+
+li:before {
+    content: "⚛";
+    color: var(--secondary);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.contact-icon {
+    color: var(--secondary);
+    font-size: 1.3rem;
+    width: 1.8rem;
+    text-align: center;
+}
+
+.formula-box {
+    background: linear-gradient(135deg, #e8eaf6 0%, #f3e5f5 100%);
+    border-left: 5px solid var(--secondary);
+    padding: 1.5rem;
+    margin: 1.2rem 0;
+    border-radius: 0 8px 8px 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.formula {
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 0.8rem 0;
+    color: #1a237e;
+    font-weight: 500;
+}
+
+.formula-title {
+    font-style: italic;
+    color: var(--gray);
+    text-align: center;
+    margin-bottom: 0.8rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+/* Segunda Ley de Newton */
+#newton-law .formula {
+    animation: shake 4s ease-in-out infinite;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    75% { transform: translateX(3px); }
+}
+
+#newton-law::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--secondary);
+    border-radius: 50%;
+    top: 10%;
+    left: 20%;
+    animation: fall 3s ease-in infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(100px); opacity: 0; }
+}
+
+/* Energía Cinética */
+#kinetic-energy .formula {
+    animation: speedPulse 2s ease-in-out infinite;
+}
+
+@keyframes speedPulse {
+    0%, 100% { transform: scale(1); color: #1a237e; }
+    50% { transform: scale(1.08); color: #0091ea; }
+}
+
+#kinetic-energy::before,
+#kinetic-energy::after {
+    content: '→';
+    position: absolute;
+    font-size: 2rem;
+    color: var(--secondary);
+    opacity: 0;
+    animation: speedArrow 2s ease-in-out infinite;
+}
+
+#kinetic-energy::before {
+    left: 10%;
+    top: 50%;
+}
+
+#kinetic-energy::after {
+    right: 10%;
+    top: 50%;
+    animation-delay: 1s;
+}
+
+@keyframes speedArrow {
+    0% { opacity: 0; transform: translateX(-20px); }
+    50% { opacity: 1; transform: translateX(0); }
+    100% { opacity: 0; transform: translateX(20px); }
+}
+
+/* Gravitación */
+#gravitation .formula {
+    animation: orbit-pulse 4s ease-in-out infinite;
+}
+
+@keyframes orbit-pulse {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.05) rotate(2deg); }
+}
+
+#gravitation::before {
+    content: '🌍';
+    position: absolute;
+    font-size: 2rem;
+    left: 15%;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: planet-rotate 8s linear infinite;
+}
+
+#gravitation::after {
+    content: '🌙';
+    position: absolute;
+    font-size: 1.2rem;
+    right: 15%;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: moon-rotate 8s linear infinite reverse;
+}
+
+@keyframes planet-rotate {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to { transform: translateY(-50%) rotate(360deg); }
+}
+
+@keyframes moon-rotate {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to { transform: translateY(-50%) rotate(-360deg); }
+}
+
+/* Principio de Incertidumbre */
+#uncertainty .formula {
+    animation: quantum-wave 3s ease-in-out infinite;
+}
+
+@keyframes quantum-wave {
+    0%, 100% { 
+        transform: translateY(0) scale(1); 
+        opacity: 1;
+        filter: blur(0);
+    }
+    25% { 
+        transform: translateY(-3px) scale(1.02); 
+        opacity: 0.9;
+        filter: blur(0.5px);
+    }
+    75% { 
+        transform: translateY(3px) scale(0.98); 
+        opacity: 0.9;
+        filter: blur(0.5px);
+    }
+}
+
+#uncertainty::before,
+#uncertainty::after {
+    content: '≈';
+    position: absolute;
+    font-size: 3rem;
+    color: var(--secondary);
+    opacity: 0.3;
+    animation: wave-symbol 4s ease-in-out infinite;
+}
+
+#uncertainty::before {
+    left: 5%;
+    top: 30%;
+}
+
+#uncertainty::after {
+    right: 5%;
+    bottom: 30%;
+    animation-delay: 2s;
+}
+
+@keyframes wave-symbol {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+    50% { transform: translateY(-10px) scale(1.2); opacity: 0.6; }
+}
+
+/* Ley de Coulomb */
+#coulomb .formula {
+    animation: electric-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes electric-pulse {
+    0%, 100% { 
+        transform: scale(1); 
+        text-shadow: 0 0 10px rgba(0, 145, 234, 0.3);
+    }
+    50% { 
+        transform: scale(1.06); 
+        text-shadow: 0 0 20px rgba(0, 145, 234, 0.6);
+    }
+}
+
+#coulomb::before {
+    content: '⚡';
+    position: absolute;
+    font-size: 2rem;
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: spark 1.5s ease-in-out infinite;
+}
+
+#coulomb::after {
+    content: '⚡';
+    position: absolute;
+    font-size: 2rem;
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: spark 1.5s ease-in-out infinite 0.75s;
+}
+
+@keyframes spark {
+    0%, 100% { opacity: 0.3; transform: translateY(-50%) scale(1); }
+    50% { opacity: 1; transform: translateY(-50%) scale(1.3); }
+}
+
+/* Ley de Ohm */
+#ohm .formula {
+    animation: current-flow 3s linear infinite;
+}
+
+@keyframes current-flow {
+    0% { text-shadow: -2px 0 10px rgba(0, 145, 234, 0.5); }
+    50% { text-shadow: 2px 0 10px rgba(102, 126, 234, 0.5); }
+    100% { text-shadow: -2px 0 10px rgba(0, 145, 234, 0.5); }
+}
+
+#ohm::before {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+    top: 50%;
+    left: 10%;
+    animation: current-line 2s linear infinite;
+}
+
+@keyframes current-line {
+    0% { opacity: 0; transform: translateX(-100%); }
+    50% { opacity: 1; }
+    100% { opacity: 0; transform: translateX(100%); }
+}
+
+/* Energía Potencial */
+#potential .formula {
+    animation: potential-rise 4s ease-in-out infinite;
+}
+
+@keyframes potential-rise {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+#potential::after {
+    content: '↑';
+    position: absolute;
+    font-size: 2.5rem;
+    color: var(--secondary);
+    right: 15%;
+    bottom: 20%;
+    animation: arrow-rise 3s ease-in-out infinite;
+}
+
+@keyframes arrow-rise {
+    0%, 100% { transform: translateY(20px); opacity: 0; }
+    50% { transform: translateY(-10px); opacity: 1; }
+}
+
+.qr-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.qr-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.qr-code {
+    width: 130px;
+    height: 130px;
+    margin-bottom: 0.8rem;
+    border: 2px solid var(--secondary);
+    padding: 8px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.qr-code:hover {
+    transform: scale(1.05);
+}
+
+.qr-code img,
+.qr-code canvas {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+.qr-label {
+    font-size: 0.85rem;
+    color: var(--gray);
+    font-weight: 600;
+}
+
+footer {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 1rem;
+}
+
+/* Estilos para impresión */
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+    
+    .action-buttons {
+        display: none;
+    }
+    
+    .container {
+        box-shadow: none;
+        border-radius: 0;
+        max-width: 100%;
+    }
+    
+    .formula-box::before,
+    .formula-box::after,
+    #gravitation::before,
+    #gravitation::after,
+    #coulomb::before,
+    #coulomb::after,
+    #uncertainty::before,
+    #uncertainty::after,
+    #kinetic-energy::before,
+    #kinetic-energy::after,
+    #potential::after,
+    #ohm::before {
+        animation: none !important;
+    }
+    
+    .nucleus,
+    .electron {
+        animation: none !important;
+    }
+    
+    .orbit {
+        animation: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.4rem;
+    }
+    
+    .qr-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .qr-container {
+        grid-template-columns: 1fr;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .formula {
+        font-size: 1.2rem;
+    }
+}
