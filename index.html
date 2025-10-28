@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         :root {
             --primary: #1a237e;
@@ -559,52 +558,6 @@
             50% { transform: translateY(-10px); opacity: 1; }
         }
         
-        .qr-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        
-        .qr-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        
-        .qr-code {
-            width: 130px;
-            height: 130px;
-            margin-bottom: 0.8rem;
-            border: 2px solid var(--secondary);
-            padding: 8px;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .qr-code:hover {
-            transform: scale(1.05);
-        }
-        
-        .qr-code img,
-        .qr-code canvas {
-            max-width: 100%;
-            max-height: 100%;
-            display: block;
-        }
-        
-        .qr-label {
-            font-size: 0.85rem;
-            color: var(--gray);
-            font-weight: 600;
-        }
-        
         footer {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -642,17 +595,9 @@
             .subtitle {
                 font-size: 1.4rem;
             }
-            
-            .qr-container {
-                grid-template-columns: 1fr 1fr;
-            }
         }
         
         @media (max-width: 480px) {
-            .qr-container {
-                grid-template-columns: 1fr;
-            }
-            
             h1 {
                 font-size: 1.8rem;
             }
@@ -824,25 +769,6 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="qr-container">
-                        <div class="qr-item">
-                            <div class="qr-code" id="qr-phone1"></div>
-                            <div class="qr-label">Teléfono 1</div>
-                        </div>
-                        <div class="qr-item">
-                            <div class="qr-code" id="qr-phone2"></div>
-                            <div class="qr-label">Teléfono 2</div>
-                        </div>
-                        <div class="qr-item">
-                            <div class="qr-code" id="qr-email1"></div>
-                            <div class="qr-label">Email 1</div>
-                        </div>
-                        <div class="qr-item">
-                            <div class="qr-code" id="qr-email2"></div>
-                            <div class="qr-label">Email 2</div>
-                        </div>
-                    </div>
                 </section>
             </div>
         </div>
@@ -867,56 +793,6 @@
             }
         };
 
-        // Función para verificar si la librería QRCode está disponible
-        function isQRCodeLoaded() {
-            return typeof QRCode !== 'undefined';
-        }
-
-        // Función para generar códigos QR
-        function generateQRCodes() {
-            if (!isQRCodeLoaded()) {
-                console.log('QRCode no está disponible, reintentando en 500ms...');
-                setTimeout(generateQRCodes, 500);
-                return;
-            }
-
-            const qrData = [
-                { id: 'qr-phone1', text: 'tel:+542213103127', label: 'Teléfono 1' },
-                { id: 'qr-phone2', text: 'tel:+541133402821', label: 'Teléfono 2' },
-                { id: 'qr-email1', text: 'mailto:yoelalvez@abc.gob.ar', label: 'Email 1' },
-                { id: 'qr-email2', text: 'mailto:yoelleo102015@gmail.com', label: 'Email 2' }
-            ];
-            
-            qrData.forEach(function(item) {
-                const element = document.getElementById(item.id);
-                
-                if (!element) {
-                    console.error('Elemento no encontrado:', item.id);
-                    return;
-                }
-                
-                // Limpiar contenido previo
-                element.innerHTML = '';
-                
-                try {
-                    // Crear el código QR
-                    new QRCode(element, {
-                        text: item.text,
-                        width: 110,
-                        height: 110,
-                        colorDark: '#667eea',
-                        colorLight: '#ffffff',
-                        correctLevel: QRCode.CorrectLevel.M
-                    });
-                    
-                    console.log('✓ QR generado:', item.label);
-                } catch (error) {
-                    console.error('Error generando QR para ' + item.id + ':', error);
-                    element.innerHTML = '<p style="font-size: 0.7rem; color: #e74c3c;">Error QR</p>';
-                }
-            });
-        }
-
         // Esperar a que todo el contenido esté cargado
         document.addEventListener('DOMContentLoaded', function() {
             // Esperar a que MathJax renderice las fórmulas
@@ -927,9 +803,6 @@
                     console.log('MathJax error:', err);
                 });
             }
-            
-            // Generar códigos QR después de un pequeño retraso para asegurar que todo esté listo
-            setTimeout(generateQRCodes, 1000);
         });
 
         // Mensaje de bienvenida
