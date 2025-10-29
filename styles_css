@@ -322,6 +322,8 @@ li:before {
     font-weight: 600;
 }
 
+/* ANIMACIONES PARA ESCRITORIO (se muestran solo en pantallas grandes) */
+
 /* Segunda Ley de Newton */
 #newton-law .formula {
     animation: shake 4s ease-in-out infinite;
@@ -654,6 +656,7 @@ footer {
     #potential::after,
     #ohm::before {
         animation: none !important;
+        display: none !important;
     }
     
     .nucleus,
@@ -665,6 +668,8 @@ footer {
         animation: none !important;
     }
 }
+
+/* MEDIA QUERIES PARA MÓVILES - OCULTAR ANIMACIONES */
 
 @media (max-width: 768px) {
     .main-content {
@@ -686,6 +691,42 @@ footer {
     .action-buttons {
         flex-direction: column;
     }
+    
+    /* OCULTAR ANIMACIONES EN MÓVILES */
+    .formula-box::before,
+    .formula-box::after,
+    #gravitation::before,
+    #gravitation::after,
+    #coulomb::before,
+    #coulomb::after,
+    #uncertainty::before,
+    #uncertainty::after,
+    #kinetic-energy::before,
+    #kinetic-energy::after,
+    #potential::after,
+    #ohm::before {
+        display: none !important;
+        animation: none !important;
+    }
+    
+    /* DETENER ANIMACIONES DE FÓRMULAS EN MÓVILES */
+    #newton-law .formula,
+    #kinetic-energy .formula,
+    #gravitation .formula,
+    #uncertainty .formula,
+    #coulomb .formula,
+    #ohm .formula,
+    #potential .formula {
+        animation: none !important;
+        transform: none !important;
+        text-shadow: none !important;
+        color: #1a237e !important;
+    }
+    
+    /* Ajustar tamaño de fórmulas para móviles */
+    .formula {
+        font-size: 1.2rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -698,6 +739,46 @@ footer {
     }
     
     .formula {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
+    
+    .formula-title {
+        font-size: 0.95rem;
+    }
+    
+    /* Asegurar que no haya animaciones en móviles pequeños */
+    .formula-box::before,
+    .formula-box::after,
+    #gravitation::before,
+    #gravitation::after,
+    #coulomb::before,
+    #coulomb::after,
+    #uncertainty::before,
+    #uncertainty::after,
+    #kinetic-energy::before,
+    #kinetic-energy::after,
+    #potential::after,
+    #ohm::before {
+        display: none !important;
+        animation: none !important;
+    }
+    
+    #newton-law .formula,
+    #kinetic-energy .formula,
+    #gravitation .formula,
+    #uncertainty .formula,
+    #coulomb .formula,
+    #ohm .formula,
+    #potential .formula {
+        animation: none !important;
+        transform: none !important;
+        text-shadow: none !important;
+        color: #1a237e !important;
+    }
+}
+
+/* MEDIA QUERY PARA ESCRITORIO - MOSTRAR ANIMACIONES */
+@media (min-width: 769px) {
+    /* Las animaciones se muestran normalmente en escritorio */
+    /* No es necesario añadir nada aquí ya que las animaciones están definidas por defecto */
 }
